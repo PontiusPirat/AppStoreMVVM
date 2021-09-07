@@ -30,15 +30,14 @@ extension BaseTabBarController {
 extension SearchResultCell {
     
     // Icon image
-    func createAppIconImage(appIconImage: UIImageView, backgroundcolor: UIColor, widthAnchor: CGFloat,
-                            heightAnchor: CGFloat, cornerRadius: CGFloat) -> UIImageView {
+    func createImage(appIconImage: UIImageView, backgroundcolor: UIColor = .blue, widthAnchor: CGFloat = 0,
+                            heightAnchor: CGFloat = 250, cornerRadius: CGFloat = 0) -> UIImageView {
         
         appIconImage.backgroundColor = backgroundcolor
         appIconImage.widthAnchor.constraint(equalToConstant: widthAnchor).isActive = true
         appIconImage.heightAnchor.constraint(equalToConstant: heightAnchor).isActive = true
         appIconImage.layer.cornerRadius = cornerRadius
         return appIconImage
-        
     }
     
     // Label
@@ -54,12 +53,12 @@ extension SearchResultCell {
         button.setTitle(title, for: .normal)
         button.setTitleColor(titleColor, for: .normal)
         button.titleLabel?.font = .boldSystemFont(ofSize: fontSize)
-        button.backgroundColor = backgroundcolor //(5)
+        button.backgroundColor = backgroundcolor 
         button.layer.cornerRadius = cornerRadius
         button.widthAnchor.constraint(equalToConstant: widthAnchor).isActive = true
         button.heightAnchor.constraint(equalToConstant: heightAnchor).isActive = true
         return button
-        
     }
+    
 }
 
