@@ -1,5 +1,5 @@
 //
-//  AppsController.swift
+//  AppsHorizontalController.swift
 //  AppStore
 //
 //  Created by Pontius Pirat on 08.09.2021.
@@ -7,19 +7,24 @@
 
 import UIKit
 
-class AppsController: BaseListController, UICollectionViewDelegateFlowLayout {
+class AppsHorizontalController: BaseListController, UICollectionViewDelegateFlowLayout {
     
     let cellId = UUID().uuidString
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         collectionView.backgroundColor = .white
+        collectionView.register(AppsRowCell.self, forCellWithReuseIdentifier: cellId)
         
-        collectionView.register(AppsGroupCell.self, forCellWithReuseIdentifier: cellId)
+        if let layout = collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.scrollDirection = .horizontal
+        }
+        
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 10
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -28,11 +33,20 @@ class AppsController: BaseListController, UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: view.frame.width, height: 300)
+        let height = (view.frame.height - (topButtonPadding + lineSpacing) * 2) / 3
+        return .init(width: view.frame.width - 48, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return lineSpacing
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .init(top: 16, left: 0, bottom: 0, right: 0)
+        return .init(top: topButtonPadding, left: 16, bottom: topButtonPadding, right: 16)
     }
     
+    // MARK: - Drawning constatns
+    
+    let topButtonPadding: CGFloat = 12
+    let lineSpacing: CGFloat = 10
 }

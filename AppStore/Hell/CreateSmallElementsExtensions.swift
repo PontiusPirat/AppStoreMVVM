@@ -43,7 +43,7 @@ extension UIImageView {
                      heightAnchor: CGFloat = 250, cornerRadius: CGFloat = 0, borderWidth: CGFloat = 0,
                      borderColor: CGColor = UIColor(white: 0, alpha: 0).cgColor, contentMode: UIView.ContentMode = .scaleAspectFill) {
         
-        self.init(frame: .zero)
+        self.init(image: nil)
         self.widthAnchor.constraint(equalToConstant: widthAnchor).isActive = true
         self.heightAnchor.constraint(equalToConstant: heightAnchor).isActive = true
         self.layer.cornerRadius = cornerRadius
@@ -59,7 +59,7 @@ extension UIButton {
     convenience init(title: String, titleColor: UIColor, font: UIFont, backgroundcolor: UIColor,
                      cornerRadius: CGFloat, widthAnchor: CGFloat, heightAnchor: CGFloat) {
         
-        self.init(frame: .zero)
+        self.init(type: .system)
         self.setTitle(title, for: .normal)
         self.setTitleColor(titleColor, for: .normal)
         self.titleLabel?.font = font
@@ -69,5 +69,3 @@ extension UIButton {
         self.heightAnchor.constraint(equalToConstant: heightAnchor).isActive = true
     }
 }
-
-
