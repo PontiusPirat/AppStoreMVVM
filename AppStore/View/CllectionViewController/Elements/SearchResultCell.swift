@@ -9,6 +9,33 @@ import UIKit
 
 class SearchResultCell: UICollectionViewCell {
     
+    var appResult: Result! {
+        didSet {
+            appNameLabel.text = appResult.trackName
+            categoryLabel.text = appResult.primaryGenreName
+            if let rating = appResult.averageUserRating {
+                let ratingDec = rating * 10
+                ratingLabel.text = "Rating: \(ratingDec.rounded() / 10)"
+            } else {
+                ratingLabel.text = "Rating: 0"
+            }
+            
+            if let iconURL = URL(string: appResult.artworkUrl100) {
+                iconImage.sd_setImage(with: iconURL)
+            } else {
+                iconImage.image = UIImage(systemName: "eye.slash")
+            }
+            
+            screenshoot1.sd_setImage(with: URL(string: appResult.screenshotUrls[0]))
+            if appResult.screenshotUrls.count > 1 {
+                screenshoot2.sd_setImage(with: URL(string: appResult.screenshotUrls[1]))
+            }
+            if appResult.screenshotUrls.count > 2 {
+                screenshoot3.sd_setImage(with: URL(string: appResult.screenshotUrls[2]))
+            }
+        }
+    }
+    
     let appNameLabel: UILabel = {
         let lbl = UILabel()
         return lbl
@@ -24,24 +51,33 @@ class SearchResultCell: UICollectionViewCell {
         return lbl
     }()
     
+    let iconImage: UIImageView = {
+        let img = UIImageView()
+        img.widthAnchor.constraint(equalToConstant: 64).isActive = true
+        img.heightAnchor.constraint(equalToConstant: 64).isActive = true
+        img.layer.cornerRadius = 12
+        img.clipsToBounds = true
+        return img
+    }()
+    
+    let getButton: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("GET", for: .normal)
+        btn.setTitleColor(.blue, for: .normal)
+        btn.titleLabel?.font = .boldSystemFont(ofSize: 14)
+        btn.backgroundColor = .systemGray5
+        btn.layer.cornerRadius = 16
+        btn.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        btn.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        return btn
+    }()
+    
+    lazy var screenshoot1 = self.createImage(cornerRadius: 8, borderWidth: 0.5, borderColor: UIColor(white: 0.5, alpha: 0.5).cgColor)
+    lazy var screenshoot2 = self.createImage(cornerRadius: 8, borderWidth: 0.5, borderColor: UIColor(white: 0.5, alpha: 0.5).cgColor)
+    lazy var screenshoot3 = self.createImage(cornerRadius: 8, borderWidth: 0.5, borderColor: UIColor(white: 0.5, alpha: 0.5).cgColor)
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        let iconImage = {
-            self.createImage(appIconImage: UIImageView(),backgroundcolor: .red,
-                                                    widthAnchor: 64, heightAnchor: 64, cornerRadius: 12)
-        }()
-        
-        let getButton = {
-            self.createButton(button: UIButton(), title: "GET", titleColor: .blue,
-                                              fontSize: 14, backgroundcolor: .systemGray5, cornerRadius: 16,
-                                              widthAnchor: 80, heightAnchor: 32)
-        }()
-        
-        lazy var screenshoot1 = self.createImage(appIconImage: UIImageView(), backgroundcolor: .blue)
-        lazy var screenshoot2 = self.createImage(appIconImage: UIImageView(), backgroundcolor: .blue)
-        lazy var screenshoot3 = self.createImage(appIconImage: UIImageView(), backgroundcolor: .blue)
-        
         
         let labelStackView = CustomStackView(arrangedSubviews: [appNameLabel, categoryLabel, ratingLabel])
         
