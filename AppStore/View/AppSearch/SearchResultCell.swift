@@ -27,6 +27,7 @@ class SearchResultCell: UICollectionViewCell {
             }
             
             screenshoot1.sd_setImage(with: URL(string: appResult.screenshotUrls[0]))
+            
             if appResult.screenshotUrls.count > 1 {
                 screenshoot2.sd_setImage(with: URL(string: appResult.screenshotUrls[1]))
             }
@@ -51,30 +52,14 @@ class SearchResultCell: UICollectionViewCell {
         return lbl
     }()
     
-    let iconImage: UIImageView = {
-        let img = UIImageView()
-        img.widthAnchor.constraint(equalToConstant: 64).isActive = true
-        img.heightAnchor.constraint(equalToConstant: 64).isActive = true
-        img.layer.cornerRadius = 12
-        img.clipsToBounds = true
-        return img
-    }()
+    private let iconImage = UIImageView(widthAnchor: 64, heightAnchor: 64, cornerRadius: 12)
     
-    let getButton: UIButton = {
-        let btn = UIButton()
-        btn.setTitle("GET", for: .normal)
-        btn.setTitleColor(.blue, for: .normal)
-        btn.titleLabel?.font = .boldSystemFont(ofSize: 14)
-        btn.backgroundColor = .systemGray5
-        btn.layer.cornerRadius = 16
-        btn.widthAnchor.constraint(equalToConstant: 80).isActive = true
-        btn.heightAnchor.constraint(equalToConstant: 32).isActive = true
-        return btn
-    }()
+    private let getButton = UIButton(title: "GET", titleColor: .systemBlue, font: .boldSystemFont(ofSize: 14),
+                             backgroundcolor: .systemGray5, cornerRadius: 16, widthAnchor: 80, heightAnchor: 32)
     
-    lazy var screenshoot1 = self.createImage(cornerRadius: 8, borderWidth: 0.5, borderColor: UIColor(white: 0.5, alpha: 0.5).cgColor)
-    lazy var screenshoot2 = self.createImage(cornerRadius: 8, borderWidth: 0.5, borderColor: UIColor(white: 0.5, alpha: 0.5).cgColor)
-    lazy var screenshoot3 = self.createImage(cornerRadius: 8, borderWidth: 0.5, borderColor: UIColor(white: 0.5, alpha: 0.5).cgColor)
+    lazy var screenshoot1 = UIImageView(cornerRadius: 8, borderWidth: 0.5, borderColor: UIColor(white: 0.5, alpha: 0.5).cgColor)
+    lazy var screenshoot2 = UIImageView(cornerRadius: 8, borderWidth: 0.5, borderColor: UIColor(white: 0.5, alpha: 0.5).cgColor)
+    lazy var screenshoot3 = UIImageView(cornerRadius: 8, borderWidth: 0.5, borderColor: UIColor(white: 0.5, alpha: 0.5).cgColor)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
