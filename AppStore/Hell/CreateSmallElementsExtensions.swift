@@ -35,7 +35,7 @@ extension SearchResultCell {
                      borderColor: CGColor = UIColor(white: 0, alpha: 0).cgColor, contentMode: UIView.ContentMode = .scaleAspectFill) -> UIImageView {
         
         let imageView = UIImageView()
-        imageView.backgroundColor = backgroundcolor
+        //imageView.backgroundColor = backgroundcolor
         imageView.widthAnchor.constraint(equalToConstant: widthAnchor).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: heightAnchor).isActive = true
         imageView.layer.cornerRadius = cornerRadius
