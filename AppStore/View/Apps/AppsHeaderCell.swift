@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import Combine
 
 class AppsHeaderCell: UICollectionViewCell {
-    
+     
     let appTitle = UILabel(text: "App Name", font: .boldSystemFont(ofSize: 12))
     let appDescription = UILabel(text: "App Description more text and other and other", font: .systemFont(ofSize: 20))
     let appImage = UIImageView(heightAnchor: 200, cornerRadius: 8)

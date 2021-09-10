@@ -18,4 +18,5 @@ struct Result: Codable {
     let averageUserRating: Float?
     let screenshotUrls: [String] // screenshots
     let artworkUrl100: String // app icon
+    let sellerName: String
 }

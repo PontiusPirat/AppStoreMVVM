@@ -11,7 +11,19 @@ class Service {
     
     static let shared = Service()
     
-    func fetchApps(searchTerm: String, complition: @escaping ([Result], Error?) -> ()) {
+    func fetchGames(complition: @escaping ([Result], Error?) -> ()) {
+        fetchApps(searchTerm: "games", complition: complition)
+    }
+    
+    func fetchSocial(complition: @escaping ([Result], Error?) -> ()) {
+        fetchApps(searchTerm: "social", complition: complition)
+    }
+    
+    func fetchMusic(complition: @escaping ([Result], Error?) -> ()) {
+        fetchApps(searchTerm: "music", complition: complition)
+    }
+    
+    func fetchApps(searchTerm: String, complition: @escaping ([Result], Error?) -> ()) -> Void {
         let urlString = "https://itunes.apple.com/search?term=\(searchTerm)&entity=software"
         guard let url = URL(string: urlString) else { return }
         

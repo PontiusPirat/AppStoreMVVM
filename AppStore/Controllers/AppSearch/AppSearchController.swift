@@ -36,7 +36,6 @@ class AppSearchController: BaseListController, UICollectionViewDelegateFlowLayou
         collectionView.addSubview(startSearchTerm)
         startSearchTerm.fillSuperview(padding: .init(top: 200, left: 125, bottom: 0, right: 0))
         
-        //fetchSearchResults()
     }
     
     fileprivate func setupSearchController() {
@@ -64,21 +63,6 @@ class AppSearchController: BaseListController, UICollectionViewDelegateFlowLayou
                 }
             }
         })
-    }
-    
-    fileprivate func fetchSearchResults() {
-        Service.shared.fetchApps(searchTerm: "twitter") { [unowned self] (results, err) in
-            
-            if let err = err {
-                print("Fetching error: ", err.localizedDescription)
-                return
-            }
-            
-            self.appSearchResults = results
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

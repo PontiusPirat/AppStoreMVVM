@@ -9,8 +9,10 @@ import UIKit
 
 class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout {
     
-    let cellId = UUID().uuidString
-    let headerId = UUID().uuidString
+    private let cellId = UUID().uuidString
+    private let headerId = UUID().uuidString
+    private let groupNames = ["Games", "Social Networking", "Music"]
+    private var fetchingResults = [[Result]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +21,10 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
         collectionView.register(AppsGroupCell.self, forCellWithReuseIdentifier: cellId)
         
         collectionView.register(AppsPageHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
+        
+       // fetchDataForGroup()
+        fetchingWithGroup()
+        
     }
     
     // MARK: - AppsPageHeader
@@ -35,11 +41,16 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
     // MARK: - AppsGroupCell
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return fetchingResults.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! AppsGroupCell
+        
+        cell.titleLabel.text = groupNames[indexPath.item]
+        cell.horizontalController.fetchingResults = fetchingResults[indexPath.item]
+        cell.horizontalController.collectionView.reloadData()
+        
         return cell
     }
     
@@ -51,4 +62,87 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
         return .init(top: 16, left: 0, bottom: 0, right: 0)
     }
     
+    // MARK: - Fetch Data
+    
+    private func fetchDataForGroup() {
+        
+        Service.shared.fetchGames() { [unowned self] (results, err) in
+            
+            if let err = err {
+                print("Fetching error: ", err.localizedDescription)
+                return
+            }
+            
+            self.fetchingResults.append(results)
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+        
+        Service.shared.fetchSocial { [unowned self] (results, err)  in
+            if let err = err {
+                print("Fetching error: ", err.localizedDescription)
+                return
+            }
+            
+            self.fetchingResults.append(results)
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+        
+        Service.shared.fetchMusic { [unowned self] (results, err)  in
+            if let err = err {
+                print("Fetching error: ", err.localizedDescription)
+                return
+            }
+            
+            self.fetchingResults.append(results)
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
+    
+    private func fetchingWithGroup() {
+        var gamesResult: [Result]?
+        var socialResult: [Result]?
+        var musicResult: [Result]?
+        
+        let dispatchGroup = DispatchGroup()
+        
+        dispatchGroup.enter()
+        Service.shared.fetchGames { result, err in
+            dispatchGroup.leave()
+            gamesResult = result
+        }
+        
+        dispatchGroup.enter()
+        Service.shared.fetchSocial { result, err in
+            dispatchGroup.leave()
+            socialResult = result
+        }
+        
+        dispatchGroup.enter()
+        Service.shared.fetchMusic { result, err in
+            dispatchGroup.leave()
+            musicResult = result
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            if let result = gamesResult {
+                self.fetchingResults.append(result)
+            }
+            
+            if let result = socialResult {
+                self.fetchingResults.append(result)
+            }
+            
+            if let result = musicResult {
+                self.fetchingResults.append(result)
+            }
+            
+            self.collectionView.reloadData()
+        }
+    }
 }

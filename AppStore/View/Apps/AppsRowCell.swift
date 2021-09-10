@@ -6,8 +6,21 @@
 //
 
 import UIKit
+import SDWebImage
 
 class AppsRowCell: UICollectionViewCell {
+    
+    var fetchingResult: Result! {
+        didSet {
+            titleLabael.text = fetchingResult.trackName
+            companyLabel.text = fetchingResult.sellerName
+            if let iconURL = URL(string: fetchingResult.artworkUrl100) {
+                iconImage.sd_setImage(with: iconURL)
+            } else {
+                iconImage.image = UIImage(systemName: "eye.slash")
+            }
+        }
+    }
     
     let iconImage = UIImageView(widthAnchor: 64, heightAnchor: 64, cornerRadius: 12)
     
