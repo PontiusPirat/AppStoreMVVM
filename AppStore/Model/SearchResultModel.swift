@@ -19,4 +19,5 @@ struct Result: Codable {
     let screenshotUrls: [String] // screenshots
     let artworkUrl100: String // app icon
     let sellerName: String
+    let description: String
 }

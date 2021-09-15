@@ -24,7 +24,7 @@ class Service {
     }
     
     func fetchApps(searchTerm: String, complition: @escaping ([Result], Error?) -> ()) -> Void {
-        let urlString = "https://itunes.apple.com/search?term=\(searchTerm)&entity=software"
+        let urlString = Endpoint.search(searchTerm).path()
         guard let url = URL(string: urlString) else { return }
         
         URLSession.shared.dataTask(with: url) { data, response, err in

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 // MARK: - Small elements for BaseTabBarController
 
@@ -68,4 +69,14 @@ extension UIButton {
         self.widthAnchor.constraint(equalToConstant: widthAnchor).isActive = true
         self.heightAnchor.constraint(equalToConstant: heightAnchor).isActive = true
     }
+}
+
+extension UISearchTextField {
+    var textPublisher: AnyPublisher<String, Never> {
+            NotificationCenter.default
+                .publisher(for: UISearchTextField.textDidChangeNotification, object: self)
+                .compactMap { $0.object as? UISearchTextField } // receiving notifications with objects which are instances of UITextFields
+                .compactMap(\.text) // extracting text and removing optional values (even though the text cannot be nil)
+                .eraseToAnyPublisher()
+        }
 }

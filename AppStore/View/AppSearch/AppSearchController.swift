@@ -7,13 +7,16 @@
 
 import UIKit
 import SDWebImage
+import SwiftUI
+import Combine
 
 class AppSearchController: BaseListController, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
     
     fileprivate let searchController = UISearchController(searchResultsController: nil)
     fileprivate let cellId = UUID().uuidString
-    fileprivate var appSearchResults = [Result]()
-    fileprivate var timer: Timer?
+    @ObservedObject var searchViewModel = SearchViewModel()
+    private var cancellabel: Set<AnyCancellable> = []
+    private var refreshTimer: Timer?
     
     fileprivate let startSearchTerm: UILabel = {
         let lbl = UILabel()
@@ -33,6 +36,8 @@ class AppSearchController: BaseListController, UICollectionViewDelegateFlowLayou
         
         setupSearchController()
         
+        searchBarListener()
+        
         collectionView.addSubview(startSearchTerm)
         startSearchTerm.fillSuperview(padding: .init(top: 200, left: 125, bottom: 0, right: 0))
         
@@ -45,22 +50,19 @@ class AppSearchController: BaseListController, UICollectionViewDelegateFlowLayou
         searchController.searchBar.delegate = self
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBarListener() {
         
-        timer?.invalidate()
+        searchController.searchBar.searchTextField.textPublisher
+            .print("LISTENER DEBUG text")
+            .assign(to: \.searchTerm, on: searchViewModel)
+            .store(in: &cancellabel)
         
-        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { _ in
-            Service.shared.fetchApps(searchTerm: searchText) { [unowned self] res, err in
-                
-                if let err = err {
-                    print("Fetching error: ", err.localizedDescription)
-                    return
-                }
-                
-                self.appSearchResults = res
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
+        //kostyl
+        refreshTimer?.invalidate()
+        refreshTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { _ in
+            
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
             }
         })
     }
@@ -70,14 +72,13 @@ class AppSearchController: BaseListController, UICollectionViewDelegateFlowLayou
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        startSearchTerm.isHidden = appSearchResults.count != 0
-        return appSearchResults.count
+        startSearchTerm.isHidden = searchViewModel.searchResults.count != 0
+        return searchViewModel.searchResults.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! SearchResultCell
-        cell.appResult = appSearchResults[indexPath.item]
-
+        cell.appResult = searchViewModel.searchResults[indexPath.item]
         return cell
     }
     

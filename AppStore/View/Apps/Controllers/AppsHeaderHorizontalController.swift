@@ -9,7 +9,8 @@ import UIKit
 
 class AppsHeaderHorizontalController: BaseListController, UICollectionViewDelegateFlowLayout {
     
-    let cellId = UUID().uuidString
+    private let cellId = UUID().uuidString
+    var headers = [Header]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +33,12 @@ class AppsHeaderHorizontalController: BaseListController, UICollectionViewDelega
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return headers.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! AppsHeaderCell
+        cell.headerData = headers[indexPath.item]
         return cell
     }
 }

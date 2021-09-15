@@ -6,13 +6,25 @@
 //
 
 import UIKit
-import Combine
 
 class AppsHeaderCell: UICollectionViewCell {
-     
-    let appTitle = UILabel(text: "App Name", font: .boldSystemFont(ofSize: 12))
-    let appDescription = UILabel(text: "App Description more text and other and other", font: .systemFont(ofSize: 20))
-    let appImage = UIImageView(heightAnchor: 200, cornerRadius: 8)
+    
+    var headerData: Header! {
+        didSet {
+            appTitle.text = headerData.name
+            appDescription.text = headerData.tagline
+            if let iconURL = URL(string: headerData.imageUrl) {
+                print("IMAGE: \(iconURL)")
+                appImage.sd_setImage(with: iconURL)
+            } else {
+                appImage.image = UIImage(systemName: "eye.slash")
+            }
+        }
+    }
+    
+    var appTitle = UILabel(text: "App Name", font: .boldSystemFont(ofSize: 12))
+    var appDescription = UILabel(text: "App Description more text and other and other", font: .systemFont(ofSize: 20))
+    var appImage = UIImageView(heightAnchor: 200, cornerRadius: 8)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
