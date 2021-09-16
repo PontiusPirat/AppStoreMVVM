@@ -12,13 +12,14 @@ import Combine
 
 class AppSearchController: BaseListController, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
     
-    fileprivate let searchController = UISearchController(searchResultsController: nil)
-    fileprivate let cellId = UUID().uuidString
+    private let searchController = UISearchController(searchResultsController: nil)
+    private let cellId = UUID().uuidString
+    
     @ObservedObject var searchViewModel = SearchViewModel()
     private var cancellabel: Set<AnyCancellable> = []
     private var refreshTimer: Timer?
     
-    fileprivate let startSearchTerm: UILabel = {
+    private let startSearchTerm: UILabel = {
         let lbl = UILabel()
         lbl.text = "Please search..."
         lbl.textAlignment = .center
@@ -40,10 +41,9 @@ class AppSearchController: BaseListController, UICollectionViewDelegateFlowLayou
         
         collectionView.addSubview(startSearchTerm)
         startSearchTerm.fillSuperview(padding: .init(top: 200, left: 125, bottom: 0, right: 0))
-        
     }
     
-    fileprivate func setupSearchController() {
+    private func setupSearchController() {
         definesPresentationContext = true
         navigationItem.searchController = self.searchController
         navigationItem.hidesSearchBarWhenScrolling = false
@@ -60,7 +60,6 @@ class AppSearchController: BaseListController, UICollectionViewDelegateFlowLayou
         //kostyl
         refreshTimer?.invalidate()
         refreshTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { _ in
-            
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
@@ -81,5 +80,4 @@ class AppSearchController: BaseListController, UICollectionViewDelegateFlowLayou
         cell.appResult = searchViewModel.searchResults[indexPath.item]
         return cell
     }
-    
 }

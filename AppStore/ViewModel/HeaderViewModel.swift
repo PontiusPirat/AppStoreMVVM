@@ -18,7 +18,7 @@ final class HeaderViewModel: ObservableObject {
     }
     
     func fetchData() {
-        MainAPI.shared.fetchHeaders(from: .header)
+        NetworkAPI.shared.fetchHeaders(from: .header)
             .assign(to: \.headers, on: self)
             .store(in: &self.cancellableSet)
     }

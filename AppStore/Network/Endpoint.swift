@@ -28,5 +28,4 @@ enum Endpoint {
             return "\(APIConstatnts.urlConstant)music&entity=software"
         }
     }
-
 }

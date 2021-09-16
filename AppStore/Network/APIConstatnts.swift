@@ -20,5 +20,4 @@ struct APIConstatnts {
             jsonDecoder.dateDecodingStrategy = .formatted(dateFormatter)
             return jsonDecoder
         }()
-    
 }

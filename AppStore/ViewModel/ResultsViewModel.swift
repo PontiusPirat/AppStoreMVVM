@@ -9,7 +9,7 @@ import Combine
 import Foundation
 
 class ResultsViewModel: ObservableObject {
-    private(set) var groupResult = [[Result]]()
+    private(set) var groupResults = [[Result]]()
     private var cancellabel: Set<AnyCancellable> = []
     
     init() {
@@ -19,17 +19,17 @@ class ResultsViewModel: ObservableObject {
     
     func fetchData() {
         
-        Publishers.CombineLatest3(MainAPI.shared.fetchResults(from: Endpoint.games)
+        Publishers.CombineLatest3(NetworkAPI.shared.fetchResults(from: Endpoint.games)
                                     .map { $0.results },
-                                  MainAPI.shared.fetchResults(from: Endpoint.social)
+                                  NetworkAPI.shared.fetchResults(from: Endpoint.social)
                                     .map { $0.results },
-                                  MainAPI.shared.fetchResults(from: Endpoint.music)
+                                  NetworkAPI.shared.fetchResults(from: Endpoint.music)
                                     .map { $0.results })
             .map { (games, social, music) -> [[Result]] in
                 let res = [games, social, music]
                 return res
             }
-            .assign(to: \.groupResult, on: self)
+            .assign(to: \.groupResults, on: self)
             .store(in: &cancellabel)
     }
 }

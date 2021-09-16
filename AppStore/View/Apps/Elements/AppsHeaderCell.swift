@@ -22,9 +22,9 @@ class AppsHeaderCell: UICollectionViewCell {
         }
     }
     
-    var appTitle = UILabel(text: "App Name", font: .boldSystemFont(ofSize: 12))
-    var appDescription = UILabel(text: "App Description more text and other and other", font: .systemFont(ofSize: 20))
-    var appImage = UIImageView(heightAnchor: 200, cornerRadius: 8)
+    private var appTitle = UILabel(text: "App Name", font: .boldSystemFont(ofSize: 12))
+    private var appDescription = UILabel(text: "App Description more text and other and other", font: .systemFont(ofSize: 20))
+    private var appImage = UIImageView(heightAnchor: 200, cornerRadius: 8)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,5 +41,4 @@ class AppsHeaderCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }

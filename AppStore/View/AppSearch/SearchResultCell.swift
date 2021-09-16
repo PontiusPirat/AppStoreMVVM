@@ -57,9 +57,9 @@ class SearchResultCell: UICollectionViewCell {
     private let getButton = UIButton(title: "GET", titleColor: .systemBlue, font: .boldSystemFont(ofSize: 14),
                              backgroundcolor: .systemGray5, cornerRadius: 16, widthAnchor: 80, heightAnchor: 32)
     
-    lazy var screenshoot1 = UIImageView(cornerRadius: 8, borderWidth: 0.5, borderColor: UIColor(white: 0.5, alpha: 0.5).cgColor)
-    lazy var screenshoot2 = UIImageView(cornerRadius: 8, borderWidth: 0.5, borderColor: UIColor(white: 0.5, alpha: 0.5).cgColor)
-    lazy var screenshoot3 = UIImageView(cornerRadius: 8, borderWidth: 0.5, borderColor: UIColor(white: 0.5, alpha: 0.5).cgColor)
+    private lazy var screenshoot1 = UIImageView(cornerRadius: 8, borderWidth: 0.5, borderColor: UIColor(white: 0.5, alpha: 0.5).cgColor)
+    private lazy var screenshoot2 = UIImageView(cornerRadius: 8, borderWidth: 0.5, borderColor: UIColor(white: 0.5, alpha: 0.5).cgColor)
+    private lazy var screenshoot3 = UIImageView(cornerRadius: 8, borderWidth: 0.5, borderColor: UIColor(white: 0.5, alpha: 0.5).cgColor)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -76,11 +76,9 @@ class SearchResultCell: UICollectionViewCell {
         
         addSubview(overallStackView)
         overallStackView.fillSuperview(padding: .init(top: 16, left: 16, bottom: 16, right: 16))
-        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }

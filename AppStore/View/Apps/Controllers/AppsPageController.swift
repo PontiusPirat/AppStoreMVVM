@@ -16,7 +16,6 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
     @ObservedObject var headerVM = HeaderViewModel()
     @ObservedObject var resVM = ResultsViewModel()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = .white
@@ -24,7 +23,6 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
         collectionView.register(AppsGroupCell.self, forCellWithReuseIdentifier: cellId)
         
         collectionView.register(AppsPageHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
-        
     }
     
     // MARK: - AppsPageHeader
@@ -32,7 +30,9 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! AppsPageHeader
         header.horizontalHeaderController.headers = headerVM.headers
-        header.horizontalHeaderController.collectionView.reloadData()
+        DispatchQueue.main.async {
+            header.horizontalHeaderController.collectionView.reloadData()
+        }
         return header
     }
     
@@ -43,16 +43,16 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
     // MARK: - AppsGroupCell
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return resVM.groupResult.count
+        return resVM.groupResults.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! AppsGroupCell
-        
         cell.titleLabel.text = groupNames[indexPath.item]
-        cell.horizontalController.fetchingResults = resVM.groupResult[indexPath.item]
-        cell.horizontalController.collectionView.reloadData()
-        
+        cell.horizontalController.groupResults = resVM.groupResults[indexPath.item]
+        DispatchQueue.main.async {
+            cell.horizontalController.collectionView.reloadData()
+        }
         return cell
     }
     
@@ -63,5 +63,4 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return .init(top: 16, left: 0, bottom: 0, right: 0)
     }
-    
 }

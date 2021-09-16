@@ -8,8 +8,8 @@
 import Foundation
 import Combine
 
-class MainAPI {
-    static let shared = MainAPI()
+class NetworkAPI {
+    static let shared = NetworkAPI()
     
     // MARK: - URl
     
@@ -38,5 +38,4 @@ class MainAPI {
             .replaceError(with: SearchResult(resultCount: 0, results: []))
             .eraseToAnyPublisher()
     }
-    
 }

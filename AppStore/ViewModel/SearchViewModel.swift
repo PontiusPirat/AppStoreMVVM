@@ -10,7 +10,7 @@ import Combine
 
 final class SearchViewModel: ObservableObject {
     @Published var searchTerm: String = ""
-    @Published var searchResults = [Result]()
+    @Published private(set) var searchResults = [Result]()
     
     private var cancellableSet: Set<AnyCancellable> = []
     
@@ -20,7 +20,7 @@ final class SearchViewModel: ObservableObject {
             .debounce(for: 0.5, scheduler: RunLoop.main)
             .removeDuplicates()
             .flatMap { (searchTerm: String) -> AnyPublisher<SearchResult, Never> in
-                MainAPI.shared.fetchResults(from: Endpoint.search(searchTerm))
+                NetworkAPI.shared.fetchResults(from: Endpoint.search(searchTerm))
             }
             //.print("LISTENER DEBUG Flat")
             .map { $0.results }

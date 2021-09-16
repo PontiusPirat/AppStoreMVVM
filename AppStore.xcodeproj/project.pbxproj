@@ -26,7 +26,7 @@
 		845DAED826EB9E850041D0B4 /* HeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DAED726EB9E850041D0B4 /* HeaderViewModel.swift */; };
 		845DAEEA26EFC4770041D0B4 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DAEE926EFC4770041D0B4 /* Endpoint.swift */; };
 		845DAEEC26EFCE430041D0B4 /* APIConstatnts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DAEEB26EFCE430041D0B4 /* APIConstatnts.swift */; };
-		845DAEEE26EFCE960041D0B4 /* MainAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DAEED26EFCE960041D0B4 /* MainAPI.swift */; };
+		845DAEEE26EFCE960041D0B4 /* NetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DAEED26EFCE960041D0B4 /* NetworkAPI.swift */; };
 		8472A06B26CFD0C700AC1FEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472A06A26CFD0C700AC1FEE /* AppDelegate.swift */; };
 		8472A06D26CFD0C700AC1FEE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8472A06C26CFD0C700AC1FEE /* SceneDelegate.swift */; };
 		8472A07226CFD0C700AC1FEE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8472A07026CFD0C700AC1FEE /* Main.storyboard */; };
@@ -57,7 +57,7 @@
 		845DAED726EB9E850041D0B4 /* HeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewModel.swift; sourceTree = "<group>"; };
 		845DAEE926EFC4770041D0B4 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		845DAEEB26EFCE430041D0B4 /* APIConstatnts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstatnts.swift; sourceTree = "<group>"; };
-		845DAEED26EFCE960041D0B4 /* MainAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAPI.swift; sourceTree = "<group>"; };
+		845DAEED26EFCE960041D0B4 /* NetworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAPI.swift; sourceTree = "<group>"; };
 		8472A06726CFD0C700AC1FEE /* AppStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8472A06A26CFD0C700AC1FEE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8472A06C26CFD0C700AC1FEE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,7 +117,7 @@
 				845DAEB826E7A4A10041D0B4 /* Service.swift */,
 				845DAEE926EFC4770041D0B4 /* Endpoint.swift */,
 				845DAEEB26EFCE430041D0B4 /* APIConstatnts.swift */,
-				845DAEED26EFCE960041D0B4 /* MainAPI.swift */,
+				845DAEED26EFCE960041D0B4 /* NetworkAPI.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -315,7 +315,7 @@
 				8472A06D26CFD0C700AC1FEE /* SceneDelegate.swift in Sources */,
 				84CA90AC26F1485B00967FA4 /* SearchViewModel.swift in Sources */,
 				845DAECB26E916310041D0B4 /* AppsHorizontalController.swift in Sources */,
-				845DAEEE26EFCE960041D0B4 /* MainAPI.swift in Sources */,
+				845DAEEE26EFCE960041D0B4 /* NetworkAPI.swift in Sources */,
 				845DAED126EA134C0041D0B4 /* AppsHeaderHorizontalController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
