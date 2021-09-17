@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class AppsHeaderHorizontalController: BaseListController, UICollectionViewDelegateFlowLayout {
     
@@ -38,7 +39,9 @@ class AppsHeaderHorizontalController: BaseListController, UICollectionViewDelega
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! AppsHeaderCell
-        cell.headerData = headers[indexPath.item]
+        cell.appTitle.text = headers[indexPath.item].name
+        cell.appDescription.text = headers[indexPath.item].tagline
+        cell.appImage.sd_setImage(with: URL(string: headers[indexPath.item].imageUrl))
         return cell
     }
 }

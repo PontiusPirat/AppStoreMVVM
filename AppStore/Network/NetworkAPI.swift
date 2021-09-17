@@ -11,7 +11,7 @@ import Combine
 class NetworkAPI {
     static let shared = NetworkAPI()
     
-    // MARK: - URl
+    // MARK: - Combine
     
     func fetch<T: Decodable>(url: String) -> AnyPublisher<T, Error> {
         URLSession.shared.dataTaskPublisher(for: URL(string: url)!)
@@ -24,7 +24,6 @@ class NetworkAPI {
     func fetchHeaders(from endpoint: Endpoint) -> AnyPublisher<[Header], Never> {
         fetch(url: endpoint.path())
             .map { return $0 }
-            //.receive(on: DispatchQueue.main)
             .print("DEBUG HEADERS: ")
             .replaceError(with: [Header]())
             .eraseToAnyPublisher()
@@ -33,9 +32,12 @@ class NetworkAPI {
     func fetchResults(from endpoint: Endpoint) -> AnyPublisher<SearchResult, Never> {
         fetch(url: endpoint.path())
             .map { return $0 }
-            //.receive(on: DispatchQueue.main)
             .print("DEBUG RESULTS: ")
             .replaceError(with: SearchResult(resultCount: 0, results: []))
             .eraseToAnyPublisher()
     }
+    
+    // MARK: - Rx + Alamo
+    
+    
 }

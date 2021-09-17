@@ -6,15 +6,23 @@
 //
 
 import UIKit
-import SwiftUI
 
 class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout {
     
     private let cellId = UUID().uuidString
     private let headerId = UUID().uuidString
     private let groupNames = ["Games", "Social Networking", "Music"]
-    @ObservedObject var headerVM = HeaderViewModel()
-    @ObservedObject var resVM = ResultsViewModel()
+    
+    var headerVM = HeaderViewModel()
+    var groupResultsVM = ResultsViewModel()
+    
+    let activityIndicatorView: UIActivityIndicatorView = {
+        let aiv = UIActivityIndicatorView(style: .large)
+        aiv.color = .black
+        aiv.startAnimating()
+        aiv.hidesWhenStopped = true
+        return aiv
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +31,29 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
         collectionView.register(AppsGroupCell.self, forCellWithReuseIdentifier: cellId)
         
         collectionView.register(AppsPageHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
+        
+//        collectionView.addSubview(activityIndicatorView)
+//        activityIndicatorView.fillSuperview()
+        
+        //fetchData()
     }
+    
+//    func fetchData() {
+//        let dispatchGroup = DispatchGroup()
+//
+//        dispatchGroup.enter()
+//        headerVM.fetchData()
+//        dispatchGroup.leave()
+//
+//        dispatchGroup.enter()
+//        groupResultsVM.fetchData()
+//        dispatchGroup.leave()
+//
+//        dispatchGroup.notify(queue: .main) {
+//            //self.activityIndicatorView.stopAnimating()
+//            self.collectionView.reloadData()
+//        }
+//    }
     
     // MARK: - AppsPageHeader
     
@@ -43,13 +73,13 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
     // MARK: - AppsGroupCell
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return resVM.groupResults.count
+        return groupResultsVM.groupResults.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! AppsGroupCell
         cell.titleLabel.text = groupNames[indexPath.item]
-        cell.horizontalController.groupResults = resVM.groupResults[indexPath.item]
+        cell.horizontalController.groupResults = groupResultsVM.groupResults[indexPath.item]
         DispatchQueue.main.async {
             cell.horizontalController.collectionView.reloadData()
         }

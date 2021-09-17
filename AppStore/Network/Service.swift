@@ -12,18 +12,18 @@ class Service {
     static let shared = Service()
     
     func fetchGames(complition: @escaping ([Result], Error?) -> ()) {
-        fetchApps(searchTerm: "games", complition: complition)
+        fetchApps(searchTerm: "games", completion: complition)
     }
     
     func fetchSocial(complition: @escaping ([Result], Error?) -> ()) {
-        fetchApps(searchTerm: "social", complition: complition)
+        fetchApps(searchTerm: "social", completion: complition)
     }
     
     func fetchMusic(complition: @escaping ([Result], Error?) -> ()) {
-        fetchApps(searchTerm: "music", complition: complition)
+        fetchApps(searchTerm: "music", completion: complition)
     }
     
-    func fetchApps(searchTerm: String, complition: @escaping ([Result], Error?) -> ()) -> Void {
+    func fetchApps(searchTerm: String, completion: @escaping ([Result], Error?) -> ()) -> Void {
         let urlString = Endpoint.search(searchTerm).path()
         guard let url = URL(string: urlString) else { return }
         
@@ -31,7 +31,7 @@ class Service {
             
             if let fetchErr = err {
                 //print("Fetch error: ", fetchErr.localizedDescription)
-                complition([], fetchErr)
+                completion([], fetchErr)
             }
             
             guard let data = data else { return }
@@ -39,11 +39,11 @@ class Service {
             do {
                 let searchResult = try JSONDecoder().decode(SearchResult.self, from: data)
                 
-                complition(searchResult.results, nil)
+                completion(searchResult.results, nil)
                 
             } catch let JsonErr {
                 //print("Failed to decode data: ", JsonErr.localizedDescription)
-                complition([], JsonErr)
+                completion([], JsonErr)
             }
             
         }.resume()
