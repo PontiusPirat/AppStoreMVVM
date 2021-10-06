@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import SDWebImage
+import Kingfisher
 
 class AppsHeaderHorizontalController: BaseListController, UICollectionViewDelegateFlowLayout {
     
@@ -41,7 +41,7 @@ class AppsHeaderHorizontalController: BaseListController, UICollectionViewDelega
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! AppsHeaderCell
         cell.appTitle.text = headers[indexPath.item].name
         cell.appDescription.text = headers[indexPath.item].tagline
-        cell.appImage.sd_setImage(with: URL(string: headers[indexPath.item].imageUrl))
+        cell.appImage.kf.setImage(with: URL(string: headers[indexPath.item].imageUrl))
         return cell
     }
 }

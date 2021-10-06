@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class SearchResultCell: UICollectionViewCell {
     
@@ -21,18 +22,18 @@ class SearchResultCell: UICollectionViewCell {
             }
             
             if let iconURL = URL(string: appResult.artworkUrl100) {
-                iconImage.sd_setImage(with: iconURL)
+                iconImage.kf.setImage(with: iconURL)
             } else {
                 iconImage.image = UIImage(systemName: "eye.slash")
             }
             
-            screenshoot1.sd_setImage(with: URL(string: appResult.screenshotUrls[0]))
+            screenshoot1.kf.setImage(with: URL(string: appResult.screenshotUrls[0]))
             
             if appResult.screenshotUrls.count > 1 {
-                screenshoot2.sd_setImage(with: URL(string: appResult.screenshotUrls[1]))
+                screenshoot2.kf.setImage(with: URL(string: appResult.screenshotUrls[1]))
             }
             if appResult.screenshotUrls.count > 2 {
-                screenshoot3.sd_setImage(with: URL(string: appResult.screenshotUrls[2]))
+                screenshoot3.kf.setImage(with: URL(string: appResult.screenshotUrls[2]))
             }
         }
     }

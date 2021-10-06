@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import SDWebImage
+import Kingfisher
 
 class AppsRowCell: UICollectionViewCell {
     
@@ -15,8 +15,7 @@ class AppsRowCell: UICollectionViewCell {
             titleLabael.text = fetchingResult.trackName
             companyLabel.text = fetchingResult.sellerName
             if let iconURL = URL(string: fetchingResult.artworkUrl100) {
-                print("IMAGE 1: \(iconURL)")
-                iconImage.sd_setImage(with: iconURL)
+                iconImage.kf.setImage(with: iconURL)
             } else {
                 iconImage.image = UIImage(systemName: "eye.slash")
             }
