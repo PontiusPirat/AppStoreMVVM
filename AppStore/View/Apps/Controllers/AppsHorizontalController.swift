@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AppsHorizontalController: BaseListController, UICollectionViewDelegateFlowLayout {
+class AppsHorizontalController: HorizontalSnapingController, UICollectionViewDelegateFlowLayout {
     
     private let cellId = UUID().uuidString
     var groupResults = [Result]()
@@ -18,9 +18,7 @@ class AppsHorizontalController: BaseListController, UICollectionViewDelegateFlow
         collectionView.backgroundColor = .white
         collectionView.register(AppsRowCell.self, forCellWithReuseIdentifier: cellId)
         
-        if let layout = collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.scrollDirection = .horizontal
-        }
+        collectionView.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -43,7 +41,7 @@ class AppsHorizontalController: BaseListController, UICollectionViewDelegateFlow
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .init(top: topButtonPadding, left: 16, bottom: topButtonPadding, right: 16)
+        return .init(top: topButtonPadding, left: 0, bottom: topButtonPadding, right: 0)
     }
     
     // MARK: - Drawning constatns

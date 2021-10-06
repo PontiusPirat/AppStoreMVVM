@@ -32,28 +32,7 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
         
         collectionView.register(AppsPageHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
         
-//        collectionView.addSubview(activityIndicatorView)
-//        activityIndicatorView.fillSuperview()
-        
-        //fetchData()
     }
-    
-//    func fetchData() {
-//        let dispatchGroup = DispatchGroup()
-//
-//        dispatchGroup.enter()
-//        headerVM.fetchData()
-//        dispatchGroup.leave()
-//
-//        dispatchGroup.enter()
-//        groupResultsVM.fetchData()
-//        dispatchGroup.leave()
-//
-//        dispatchGroup.notify(queue: .main) {
-//            //self.activityIndicatorView.stopAnimating()
-//            self.collectionView.reloadData()
-//        }
-//    }
     
     // MARK: - AppsPageHeader
     
