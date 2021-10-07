@@ -13,6 +13,7 @@ struct SearchResult: Codable {
 }
 
 struct Result: Codable {
+    let trackId: Int
     let trackName: String
     let primaryGenreName: String
     let averageUserRating: Float?
@@ -20,4 +21,6 @@ struct Result: Codable {
     let artworkUrl100: String // app icon
     let sellerName: String
     let description: String
+    let releaseNotes: String?
+    let formattedPrice: String?
 }

@@ -59,6 +59,13 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! AppsGroupCell
         cell.titleLabel.text = groupNames[indexPath.item]
         cell.horizontalController.groupResults = groupResultsVM.groupResults[indexPath.item]
+        
+        cell.horizontalController.didSelectHandler = { [unowned self] app in
+            let appController = AppDetailController()
+            appController.app = app
+            self.navigationController?.pushViewController(appController, animated: true)
+        }
+        
         DispatchQueue.main.async {
             cell.horizontalController.collectionView.reloadData()
         }

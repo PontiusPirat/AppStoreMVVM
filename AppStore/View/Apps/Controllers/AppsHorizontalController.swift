@@ -12,6 +12,8 @@ class AppsHorizontalController: HorizontalSnapingController, UICollectionViewDel
     private let cellId = UUID().uuidString
     var groupResults = [Result]()
     
+    var didSelectHandler: ((Result) -> ())?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,6 +21,11 @@ class AppsHorizontalController: HorizontalSnapingController, UICollectionViewDel
         collectionView.register(AppsRowCell.self, forCellWithReuseIdentifier: cellId)
         
         collectionView.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let app = groupResults[indexPath.item]
+        didSelectHandler?(app)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
