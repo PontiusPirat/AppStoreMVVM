@@ -38,7 +38,10 @@ class AppsRowCell: UICollectionViewCell {
         let horizontalStack = CustomStackView(arrangedSubviews: [iconImage,
                                                                  CustomStackView(arrangedSubviews: [titleLabael, companyLabel], spacing: 4),
                                                                  getButton],
-                                              spacing: 16, alignment: .center, axis: .horizontal, distribution: .fill)
+                                              spacing: 16,
+                                              alignment: .center,
+                                              axis: .horizontal,
+                                              distribution: .fill)
         addSubview(horizontalStack)
         horizontalStack.fillSuperview()
     }

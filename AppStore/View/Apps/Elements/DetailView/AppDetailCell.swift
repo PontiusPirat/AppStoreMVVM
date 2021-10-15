@@ -10,8 +10,6 @@ import Kingfisher
 
 class AppDetailCell: UICollectionViewCell {
     
-    // MARK: - Зачем инитить все тут, если можно в конструкторе? На "подумать"
-    
     var app: Result! {
         didSet {
             if let imgUrl = URL(string: app.artworkUrl100) {
@@ -20,7 +18,6 @@ class AppDetailCell: UICollectionViewCell {
             appName.text = app.trackName
             appPriceButton.setTitle(app.formattedPrice, for: .normal)
             appReleaseNote.text = app.releaseNotes
-            
         }
     }
     
