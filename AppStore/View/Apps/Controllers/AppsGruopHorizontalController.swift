@@ -10,7 +10,12 @@ import UIKit
 class AppsGruopHorizontalController: HorizontalSnapingController, UICollectionViewDelegateFlowLayout {
     
     private let cellId = UUID().uuidString
-    var groupResults = [Result]()
+    
+    var groupResults: [Result]? {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     
     var didSelectHandler: ((Result) -> ())?
     
@@ -24,17 +29,17 @@ class AppsGruopHorizontalController: HorizontalSnapingController, UICollectionVi
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let app = groupResults[indexPath.item]
+        guard let app = groupResults?[indexPath.item] else { return }
         didSelectHandler?(app)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return groupResults.count
+        return groupResults?.count ?? 0
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! AppsRowCell
-        cell.fetchingResult = groupResults[indexPath.item]
+        cell.fetchingResult = groupResults?[indexPath.item]
         return cell
     }
     

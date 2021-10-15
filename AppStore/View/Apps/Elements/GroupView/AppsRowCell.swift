@@ -42,6 +42,7 @@ class AppsRowCell: UICollectionViewCell {
                                               alignment: .center,
                                               axis: .horizontal,
                                               distribution: .fill)
+        
         addSubview(horizontalStack)
         horizontalStack.fillSuperview()
     }

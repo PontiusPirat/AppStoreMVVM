@@ -10,6 +10,7 @@ import UIKit
 class AppDetailScreens: UICollectionViewCell {
     
     let horizontalScreensController = AppDetailScreensController()
+    
     private let previewTitle = UILabel(text: "Preview", font: .boldSystemFont(ofSize: 20))
     
     override init(frame: CGRect) {

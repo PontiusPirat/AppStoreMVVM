@@ -11,10 +11,11 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
     
     private let cellId = UUID().uuidString
     private let headerId = UUID().uuidString
+    
     private let groupNames = ["Games", "Social Networking", "Music"]
     
-    var headerVM = HeaderViewModel()
-    var groupResultsVM = ResultsViewModel()
+    private var headerViewModel = HeaderViewModel()
+    private var groupResultsViewModel = ResultsViewModel()
     
     let activityIndicatorView: UIActivityIndicatorView = {
         let aiv = UIActivityIndicatorView(style: .large)
@@ -26,22 +27,16 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.backgroundColor = .white
         
         collectionView.register(AppsGroupCell.self, forCellWithReuseIdentifier: cellId)
-        
         collectionView.register(AppsPageHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
-        
     }
     
     // MARK: - AppsPageHeader
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! AppsPageHeader
-        header.horizontalHeaderController.headers = headerVM.headers
-        DispatchQueue.main.async {
-            header.horizontalHeaderController.collectionView.reloadData()
-        }
+        header.horizontalHeaderController.headers = headerViewModel.headers
         return header
     }
     
@@ -52,23 +47,19 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
     // MARK: - AppsGroupCell
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return groupResultsVM.groupResults.count
+        return groupResultsViewModel.groupResults.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! AppsGroupCell
         cell.titleLabel.text = groupNames[indexPath.item]
-        cell.horizontalGroupController.groupResults = groupResultsVM.groupResults[indexPath.item]
+        cell.horizontalGroupController.groupResults = groupResultsViewModel.groupResults[indexPath.item]
         
         // MARK: - DetailView
         cell.horizontalGroupController.didSelectHandler = { [unowned self] app in
             let appController = AppDetailController()
             appController.app = app
             self.navigationController?.pushViewController(appController, animated: true)
-        }
-        
-        DispatchQueue.main.async {
-            cell.horizontalGroupController.collectionView.reloadData()
         }
         return cell
     }

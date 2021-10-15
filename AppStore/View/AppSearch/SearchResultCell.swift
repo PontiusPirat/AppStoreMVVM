@@ -14,6 +14,7 @@ class SearchResultCell: UICollectionViewCell {
         didSet {
             appNameLabel.text = appResult.trackName
             categoryLabel.text = appResult.primaryGenreName
+            
             if let rating = appResult.averageUserRating {
                 let ratingDec = rating * 10
                 ratingLabel.text = "Rating: \(ratingDec.rounded() / 10)"
@@ -32,6 +33,7 @@ class SearchResultCell: UICollectionViewCell {
             if appResult.screenshotUrls.count > 1 {
                 screenshoot2.kf.setImage(with: URL(string: appResult.screenshotUrls[1]))
             }
+            
             if appResult.screenshotUrls.count > 2 {
                 screenshoot3.kf.setImage(with: URL(string: appResult.screenshotUrls[2]))
             }

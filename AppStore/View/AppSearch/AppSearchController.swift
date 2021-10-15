@@ -12,9 +12,10 @@ import Combine
 class AppSearchController: BaseListController, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
     
     private let searchController = UISearchController(searchResultsController: nil)
+    
     private let cellId = UUID().uuidString
     
-    @ObservedObject var searchViewModel = SearchViewModel()
+    private var searchViewModel = SearchViewModel()
     private var cancellabel: Set<AnyCancellable> = []
     private var refreshTimer: Timer?
     
@@ -30,12 +31,9 @@ class AppSearchController: BaseListController, UICollectionViewDelegateFlowLayou
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.backgroundColor = .white
-        
         collectionView.register(SearchResultCell.self, forCellWithReuseIdentifier: cellId)
         
         setupSearchController()
-        
         searchBarListener()
         
         collectionView.addSubview(startSearchTerm)

@@ -13,5 +13,3 @@ struct Header: Codable {
     let tagline: String
     let imageUrl: String
 }
-
-//typealias Header = [HeaderElement]
