@@ -6,10 +6,23 @@
 //
 
 import UIKit
+import Kingfisher
 
 class AppDetailCell: UICollectionViewCell {
     
     // MARK: - Зачем инитить все тут, если можно в конструкторе? На "подумать"
+    
+    var app: Result! {
+        didSet {
+            if let imgUrl = URL(string: app.artworkUrl100) {
+                appImage.kf.setImage(with: imgUrl)
+            }
+            appName.text = app.trackName
+            appPriceButton.setTitle(app.formattedPrice, for: .normal)
+            appReleaseNote.text = app.releaseNotes
+            
+        }
+    }
     
     let appImage = UIImageView(widthAnchor: 120 , heightAnchor: 120, cornerRadius: 16)
     let appName = UILabel(text: "AppName", font: .boldSystemFont(ofSize: 24), numberOfLines: 2)
@@ -17,14 +30,16 @@ class AppDetailCell: UICollectionViewCell {
     let appPriceButton = UIButton(title: "Price", titleColor: .white, font: .systemFont(ofSize: 20), backgroundcolor: .systemBlue, cornerRadius: 16, widthAnchor: 80, heightAnchor: 32)
     let appReleaseNote = UILabel(text: "Release Notes", font: .systemFont(ofSize: 16), numberOfLines: 0)
     
-    //var app: Result?
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         appImage.backgroundColor = .systemTeal
         
-        let headStackView = CustomStackView(arrangedSubviews: [appImage, CustomStackView(arrangedSubviews: [appName, appPriceButton], spacing: 12)],
+        let headStackView = CustomStackView(arrangedSubviews: [appImage,
+                                                               CustomStackView(arrangedSubviews: [appName,
+                                                                                                  UIStackView(arrangedSubviews: [appPriceButton,
+                                                                                                                                 UIView()]),
+                                                                                                  UIView()], spacing: 12)],
                                             spacing: 20,
                                             axis: .horizontal)
         

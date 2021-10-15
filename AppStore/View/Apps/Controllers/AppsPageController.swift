@@ -58,16 +58,17 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! AppsGroupCell
         cell.titleLabel.text = groupNames[indexPath.item]
-        cell.horizontalController.groupResults = groupResultsVM.groupResults[indexPath.item]
+        cell.horizontalGroupController.groupResults = groupResultsVM.groupResults[indexPath.item]
         
-        cell.horizontalController.didSelectHandler = { [unowned self] app in
+        // MARK: - DetailView
+        cell.horizontalGroupController.didSelectHandler = { [unowned self] app in
             let appController = AppDetailController()
             appController.app = app
             self.navigationController?.pushViewController(appController, animated: true)
         }
         
         DispatchQueue.main.async {
-            cell.horizontalController.collectionView.reloadData()
+            cell.horizontalGroupController.collectionView.reloadData()
         }
         return cell
     }

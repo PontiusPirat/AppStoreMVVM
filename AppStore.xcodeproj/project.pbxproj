@@ -8,16 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		844EE95926D24D7A0020BD1D /* AppSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EE95826D24D7A0020BD1D /* AppSearchController.swift */; };
+		8458A033270E2B3600F48859 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8458A032270E2B3600F48859 /* Kingfisher */; };
+		8458A035270E309D00F48859 /* HorizontalSnapingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458A034270E309D00F48859 /* HorizontalSnapingController.swift */; };
+		8458A037270E381E00F48859 /* SnappingCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458A036270E381E00F48859 /* SnappingCollectionViewLayout.swift */; };
 		8458AE1826D3A213007E42D4 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458AE1726D3A213007E42D4 /* SearchResultCell.swift */; };
 		8458AE1B26D66255007E42D4 /* CreateSmallElementsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458AE1A26D66255007E42D4 /* CreateSmallElementsExtensions.swift */; };
 		8458AE1F26D68FEC007E42D4 /* CustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458AE1E26D68FEC007E42D4 /* CustomStackView.swift */; };
 		8458AE2226D6A86C007E42D4 /* SearchResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8458AE2126D6A86C007E42D4 /* SearchResultModel.swift */; };
+		845BB03F270F2DEF00F18B23 /* AppDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB03E270F2DEF00F18B23 /* AppDetailController.swift */; };
+		845BB041270F380E00F18B23 /* AppDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845BB040270F380E00F18B23 /* AppDetailCell.swift */; };
 		845DAEB926E7A4A10041D0B4 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DAEB826E7A4A10041D0B4 /* Service.swift */; };
-		845DAEBD26E7B35F0041D0B4 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 845DAEBC26E7B35F0041D0B4 /* SDWebImage */; };
 		845DAEC026E8F7440041D0B4 /* AppsPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DAEBF26E8F7440041D0B4 /* AppsPageController.swift */; };
 		845DAEC226E8FB3D0041D0B4 /* BaseListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DAEC126E8FB3D0041D0B4 /* BaseListController.swift */; };
 		845DAEC726E902640041D0B4 /* AppsGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DAEC626E902640041D0B4 /* AppsGroupCell.swift */; };
-		845DAECB26E916310041D0B4 /* AppsHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DAECA26E916310041D0B4 /* AppsHorizontalController.swift */; };
+		845DAECB26E916310041D0B4 /* AppsGruopHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DAECA26E916310041D0B4 /* AppsGruopHorizontalController.swift */; };
 		845DAECD26E9230E0041D0B4 /* AppsRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DAECC26E9230E0041D0B4 /* AppsRowCell.swift */; };
 		845DAECF26EA078E0041D0B4 /* AppsPageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DAECE26EA078E0041D0B4 /* AppsPageHeader.swift */; };
 		845DAED126EA134C0041D0B4 /* AppsHeaderHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DAED026EA134C0041D0B4 /* AppsHeaderHorizontalController.swift */; };
@@ -40,15 +44,19 @@
 
 /* Begin PBXFileReference section */
 		844EE95826D24D7A0020BD1D /* AppSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSearchController.swift; sourceTree = "<group>"; };
+		8458A034270E309D00F48859 /* HorizontalSnapingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalSnapingController.swift; sourceTree = "<group>"; };
+		8458A036270E381E00F48859 /* SnappingCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnappingCollectionViewLayout.swift; sourceTree = "<group>"; };
 		8458AE1726D3A213007E42D4 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		8458AE1A26D66255007E42D4 /* CreateSmallElementsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSmallElementsExtensions.swift; sourceTree = "<group>"; };
 		8458AE1E26D68FEC007E42D4 /* CustomStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStackView.swift; sourceTree = "<group>"; };
 		8458AE2126D6A86C007E42D4 /* SearchResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultModel.swift; sourceTree = "<group>"; };
+		845BB03E270F2DEF00F18B23 /* AppDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailController.swift; sourceTree = "<group>"; };
+		845BB040270F380E00F18B23 /* AppDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailCell.swift; sourceTree = "<group>"; };
 		845DAEB826E7A4A10041D0B4 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		845DAEBF26E8F7440041D0B4 /* AppsPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsPageController.swift; sourceTree = "<group>"; };
 		845DAEC126E8FB3D0041D0B4 /* BaseListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseListController.swift; sourceTree = "<group>"; };
 		845DAEC626E902640041D0B4 /* AppsGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsGroupCell.swift; sourceTree = "<group>"; };
-		845DAECA26E916310041D0B4 /* AppsHorizontalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHorizontalController.swift; sourceTree = "<group>"; };
+		845DAECA26E916310041D0B4 /* AppsGruopHorizontalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsGruopHorizontalController.swift; sourceTree = "<group>"; };
 		845DAECC26E9230E0041D0B4 /* AppsRowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsRowCell.swift; sourceTree = "<group>"; };
 		845DAECE26EA078E0041D0B4 /* AppsPageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsPageHeader.swift; sourceTree = "<group>"; };
 		845DAED026EA134C0041D0B4 /* AppsHeaderHorizontalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHeaderHorizontalController.swift; sourceTree = "<group>"; };
@@ -76,7 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				845DAEBD26E7B35F0041D0B4 /* SDWebImage in Frameworks */,
+				8458A033270E2B3600F48859 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +106,7 @@
 				8458AE1A26D66255007E42D4 /* CreateSmallElementsExtensions.swift */,
 				84B23FE226D2841500B10080 /* Anchor.swift */,
 				8458AE1E26D68FEC007E42D4 /* CustomStackView.swift */,
+				8458A036270E381E00F48859 /* SnappingCollectionViewLayout.swift */,
 			);
 			path = Hell;
 			sourceTree = "<group>";
@@ -189,8 +198,9 @@
 			isa = PBXGroup;
 			children = (
 				845DAEBF26E8F7440041D0B4 /* AppsPageController.swift */,
-				845DAECA26E916310041D0B4 /* AppsHorizontalController.swift */,
+				845DAECA26E916310041D0B4 /* AppsGruopHorizontalController.swift */,
 				845DAED026EA134C0041D0B4 /* AppsHeaderHorizontalController.swift */,
+				845BB03E270F2DEF00F18B23 /* AppDetailController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -202,6 +212,7 @@
 				845DAECC26E9230E0041D0B4 /* AppsRowCell.swift */,
 				845DAECE26EA078E0041D0B4 /* AppsPageHeader.swift */,
 				845DAED226EA16640041D0B4 /* AppsHeaderCell.swift */,
+				845BB040270F380E00F18B23 /* AppDetailCell.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -209,6 +220,7 @@
 		84CA90AA26F145EF00967FA4 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				8458A034270E309D00F48859 /* HorizontalSnapingController.swift */,
 				845DAEC126E8FB3D0041D0B4 /* BaseListController.swift */,
 				8472A07F26CFD91000AC1FEE /* BaseTabBarController.swift */,
 			);
@@ -232,7 +244,7 @@
 			);
 			name = AppStore;
 			packageProductDependencies = (
-				845DAEBC26E7B35F0041D0B4 /* SDWebImage */,
+				8458A032270E2B3600F48859 /* Kingfisher */,
 			);
 			productName = AppStore;
 			productReference = 8472A06726CFD0C700AC1FEE /* AppStore.app */;
@@ -263,7 +275,7 @@
 			);
 			mainGroup = 8472A05E26CFD0C700AC1FEE;
 			packageReferences = (
-				845DAEBB26E7B35F0041D0B4 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				8458A031270E2B3600F48859 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 8472A06826CFD0C700AC1FEE /* Products */;
 			projectDirPath = "";
@@ -292,14 +304,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				845BB03F270F2DEF00F18B23 /* AppDetailController.swift in Sources */,
 				845DAED526EB9DF60041D0B4 /* Header.swift in Sources */,
 				845DAED826EB9E850041D0B4 /* HeaderViewModel.swift in Sources */,
 				845DAEC726E902640041D0B4 /* AppsGroupCell.swift in Sources */,
 				84B23FE326D2841500B10080 /* Anchor.swift in Sources */,
+				8458A035270E309D00F48859 /* HorizontalSnapingController.swift in Sources */,
 				845DAECD26E9230E0041D0B4 /* AppsRowCell.swift in Sources */,
 				845DAEEC26EFCE430041D0B4 /* APIConstatnts.swift in Sources */,
 				845DAEC026E8F7440041D0B4 /* AppsPageController.swift in Sources */,
 				845DAED326EA16640041D0B4 /* AppsHeaderCell.swift in Sources */,
+				845BB041270F380E00F18B23 /* AppDetailCell.swift in Sources */,
 				845DAEEA26EFC4770041D0B4 /* Endpoint.swift in Sources */,
 				844EE95926D24D7A0020BD1D /* AppSearchController.swift in Sources */,
 				8458AE2226D6A86C007E42D4 /* SearchResultModel.swift in Sources */,
@@ -313,8 +328,9 @@
 				8458AE1826D3A213007E42D4 /* SearchResultCell.swift in Sources */,
 				845DAEC226E8FB3D0041D0B4 /* BaseListController.swift in Sources */,
 				8472A06D26CFD0C700AC1FEE /* SceneDelegate.swift in Sources */,
+				8458A037270E381E00F48859 /* SnappingCollectionViewLayout.swift in Sources */,
 				84CA90AC26F1485B00967FA4 /* SearchViewModel.swift in Sources */,
-				845DAECB26E916310041D0B4 /* AppsHorizontalController.swift in Sources */,
+				845DAECB26E916310041D0B4 /* AppsGruopHorizontalController.swift in Sources */,
 				845DAEEE26EFCE960041D0B4 /* NetworkAPI.swift in Sources */,
 				845DAED126EA134C0041D0B4 /* AppsHeaderHorizontalController.swift in Sources */,
 			);
@@ -538,21 +554,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		845DAEBB26E7B35F0041D0B4 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+		8458A031270E2B3600F48859 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
+				minimumVersion = 7.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		845DAEBC26E7B35F0041D0B4 /* SDWebImage */ = {
+		8458A032270E2B3600F48859 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 845DAEBB26E7B35F0041D0B4 /* XCRemoteSwiftPackageReference "SDWebImage" */;
-			productName = SDWebImage;
+			package = 8458A031270E2B3600F48859 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

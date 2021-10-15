@@ -33,9 +33,10 @@ class AppsHeaderHorizontalController: HorizontalSnapingController, UICollectionV
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! AppsHeaderCell
-        cell.appTitle.text = headers[indexPath.item].name
-        cell.appDescription.text = headers[indexPath.item].tagline
-        cell.appImage.kf.setImage(with: URL(string: headers[indexPath.item].imageUrl))
+        cell.headerData = headers[indexPath.item]
+//        cell.appTitle.text = headers[indexPath.item].name
+//        cell.appDescription.text = headers[indexPath.item].tagline
+//        cell.appImage.kf.setImage(with: URL(string: headers[indexPath.item].imageUrl))
         return cell
     }
 }

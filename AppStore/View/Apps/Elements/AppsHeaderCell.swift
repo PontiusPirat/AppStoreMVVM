@@ -6,21 +6,22 @@
 //
 
 import UIKit
+import Kingfisher
 
 class AppsHeaderCell: UICollectionViewCell {
     
-//    var headerData: Header! {
-//        didSet {
-//            appTitle.text = headerData.name
-//            appDescription.text = headerData.tagline
-//            if let iconURL = URL(string: headerData.imageUrl) {
-//                print("IMAGE: \(iconURL)")
-//                appImage.sd_setImage(with: iconURL)
-//            } else {
-//                appImage.image = UIImage(systemName: "eye.slash")
-//            }
-//        }
-//    }
+    var headerData: Header! {
+        didSet {
+            appTitle.text = headerData.name
+            appDescription.text = headerData.tagline
+            if let iconURL = URL(string: headerData.imageUrl) {
+                print("IMAGE: \(iconURL)")
+                appImage.kf.setImage(with: iconURL)
+            } else {
+                appImage.image = UIImage(systemName: "eye.slash")
+            }
+        }
+    }
     
      var appTitle = UILabel(text: "App Name", font: .boldSystemFont(ofSize: 12))
      var appDescription = UILabel(text: "App Description more text and other and other", font: .systemFont(ofSize: 20))

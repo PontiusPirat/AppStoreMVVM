@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AppsHorizontalController: HorizontalSnapingController, UICollectionViewDelegateFlowLayout {
+class AppsGruopHorizontalController: HorizontalSnapingController, UICollectionViewDelegateFlowLayout {
     
     private let cellId = UUID().uuidString
     var groupResults = [Result]()
